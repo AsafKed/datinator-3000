@@ -31,7 +31,7 @@ export function getDates() {
     return DATES;
 }
 export function getDate(id) {
-    return DATES.find((product) => (id == id));
+    return DATES.find((product) => (product.id == id));
 }
 
 // add ; delimiter
