@@ -33,7 +33,7 @@ export function DateDetails({route}) {
         />
         <View style={styles.infoContainer}>
           <Text style={styles.name}>{date.name}</Text>
-          <Text style={styles.price}>$ {date.price_low}</Text>
+          <Text style={styles.price_low}>$ {date.price_low}</Text>
           <Text style={styles.description}>{date.short_description}</Text>
             <Button
             onPress={onAddToCart}
@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
     fontSize: 22,
     fontWeight: 'bold',
   },
-  price: {
+  price_low: {
     fontSize: 16,
     fontWeight: '600',
     marginBottom: 8,

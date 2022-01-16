@@ -17,7 +17,24 @@ function replaceByValue(json, field) {
     }
     return json;
 }
-  
+
+function shapeJSON(obj) {
+    const arr = JSON.parse(obj);
+    // const arr = json.json()
+    //arr.forEach( obj => renameKey( obj, 'date_id', 'id' ) );
+    // arr.forEach( obj => renameKey( obj, 'short_description', 'description' ) );
+    // arr.forEach( obj => renameKey( obj, 'price_low', 'price' ) );
+    // arr.forEach( obj => renameKey( obj, 'double_date', 'image' ) );
+    // const arrstring = JSON.stringify( arr );
+    // replaceByValue(arrstring, "image");
+    // console.log( arrstring );
+    // const updatedJson = JSON.parse( arrstring )
+    // console.log( updatedJson );
+
+    // DATES = updatedJson;
+
+}
+
 //   const json = `
 //     [
 //       {
@@ -38,22 +55,22 @@ function replaceByValue(json, field) {
 
 let DATES = [
     {
-        id: 1,
+        date_id: 1,
         name: 'ReactProX Headset',
-        price: 350,
+        price_low: 350,
         image: require('../assets/dates/headset-100.jpg'),
-        description: 'A headset combines a headphone with microphone. Headsets are made with either a single-earpiece (mono) or a double-earpiece (mono to both ears or stereo).'
+        short_description: 'A headset combines a headphone with microphone. Headsets are made with either a single-earpiece (mono) or a double-earpiece (mono to both ears or stereo).'
     }
     // ,
     // {
-    //     id: 2,
+    //     date_id: 2,
     //     name: 'FastLane Toy Car',
     //     price: 600,
     //     image: require('../assets/dates/car-101.jpg'),
     //     description: 'A model car, or toy car, is a miniature representation of an automobile. Other miniature motor vehicles, such as trucks, buses, or even ATVs, etc. are often included in this general category.'
     // },
     // {
-    //     id: 3,
+    //     date_id: 3,
     //     name: 'SweetHome Cupcake',
     //     price: 2,
     //     image: require('../assets/dates/cake-102.jpg'),
@@ -61,51 +78,35 @@ let DATES = [
     // }
 ];
 
-const INIT = DATES;
+let call = true;
 
-// async function
-async function getData(){
-    let data = await (await (fetch('https://www.asafkedem.com/api/v1/dates',
-    {
-        crossDomain:true
-    })
-      .then(res => {
-        return res.json()
-      })
-      .catch(err => {
-        console.log('Error: ', err)
-      })
-    ));
-    
-    console.log("The following is the json object.");
-    console.log(data);
-    return data;
-  }
-  
 
 export function getDates() {
-    // if (DATES == INIT) {
-    //     getData().then(data => DATES = data);
+    // if (call) {
+    //     let data = await (await (fetch('https://www.asafkedem.com/api/v1/dates',
+    //     {
+    //         crossDomain:true
+    //     })
+    //     .then(res => {
+    //         return res.json()
+    //     })
+    //     .catch(err => {
+    //         console.log('Error: ', err)
+    //     })
+    //     ));
+        
+    //     DATES = data;
+        
+    //     console.log("DATES HAS BEEN CHANGED TO");
+    //     console.log( DATES );
+    //     call = false;
     // } 
-
-    // const arr = JSON.parse(json.data);
-    // const arr = json.json()
-    //arr.forEach( obj => renameKey( obj, 'date_id', 'id' ) );
-    // arr.forEach( obj => renameKey( obj, 'short_description', 'description' ) );
-    // arr.forEach( obj => renameKey( obj, 'price_low', 'price' ) );
-    // arr.forEach( obj => renameKey( obj, 'double_date', 'image' ) );
-    // const arrstring = JSON.stringify( arr );
-    // replaceByValue(arrstring, "image");
-    // console.log( arrstring );
-    // const updatedJson = JSON.parse( arrstring )
-    // console.log( updatedJson );
-
-    // DATES = updatedJson;
+    console.log( DATES )
     return DATES;
 }
 
-export function getDate(id) {
-    return DATES.find((date) => (date.date_id == id));
+export function getDate(date_id) {
+    return DATES.find((date) => (date.date_id == date_id));
 }
 
 // add ; delimiter

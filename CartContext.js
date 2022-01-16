@@ -4,13 +4,13 @@ export const CartContext = createContext();
 export function CartProvider(props) {
   const [items, setItems] = useState([]);
 
-  function addItemToCart(id) {
-    const date = getDate(id);
+  function addItemToCart(date_id) {
+    const date = getDate(date_id);
     setItems((prevItems) => {
-      const item = prevItems.find((item) => (item.id == id));
+      const item = prevItems.find((item) => (item.date_id == date_id));
       if(!item) {
           return [...prevItems, {
-              id,
+              date_id,
               qty: 1,
               date,
               totalPrice: date.price_low 
@@ -18,7 +18,7 @@ export function CartProvider(props) {
       }
       else { 
           return prevItems.map((item) => {
-            if(item.id == id) {
+            if(item.date_id == date_id) {
               item.qty++;
               item.totalPrice += date.price_low;
             }

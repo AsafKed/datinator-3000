@@ -25,7 +25,7 @@ function renderDate({item: date}) {
     <FlatList
       style={styles.datesList}
       contentContainerStyle={styles.datesListContainer}
-      keyExtractor={(item) => item.id.toString()}
+      keyExtractor={(item) => item.date_id.toString()}
       data={dates}
       renderItem={renderDate}
     />

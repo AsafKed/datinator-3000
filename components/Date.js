@@ -1,6 +1,6 @@
 import React from 'react';
 import {Text, Image, View, StyleSheet, TouchableOpacity} from 'react-native';
-export function Date({name, price, image, onPress}) {
+export function Date({name, price_low, image, onPress}) {
   return (
     <TouchableOpacity style={styles.card} onPress={onPress}>
       <Image
@@ -9,7 +9,7 @@ export function Date({name, price, image, onPress}) {
       />
       <View style={styles.infoContainer}>
         <Text style={styles.name}>{name}</Text>
-        <Text style={styles.price}>{'\u20AC'} {price}</Text>
+        <Text style={styles.price_low}>{'\u20AC'} {price_low}</Text>
       </View>
     </TouchableOpacity>
   );
@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
       fontSize: 22,
       fontWeight: 'bold',
     },
-    price: {
+    price_low: {
       fontSize: 16,
       fontWeight: '600',
       marginBottom: 8,
