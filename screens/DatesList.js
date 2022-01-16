@@ -19,7 +19,7 @@ function renderDate({item: date}) {
 
   useEffect(() => {
     setDates(getDates());
-  });
+  }, []);
 
   return (
     <FlatList
