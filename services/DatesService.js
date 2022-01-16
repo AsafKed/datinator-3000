@@ -78,38 +78,71 @@ let DATES = [
     }
 ];
 
-let call = true;
-
+async function importDates () {
+    // Call the data 
+    let data = await (await (fetch('https://www.asafkedem.com/api/v1/dates',
+    {
+        crossDomain:true
+    })
+    .then(res => {
+        return res.json();
+    })
+    .then(data => {
+        // Set default data to retrieved 
+        DATES = data.data;
+        return data.data;
+    })
+    .catch(err => {
+        console.log('Error: ', err)
+    })
+    ));
+    return data;
+}
 
 export async function getDates() {
-    if (call) {
-        // Call the data 
-        let data = await (await (fetch('https://www.asafkedem.com/api/v1/dates',
-        {
-            crossDomain:true
-        })
-        .then(res => {
-            return res.json()
-        })
-        .catch(err => {
-            console.log('Error: ', err)
-        })
-        ));
-        
+    await (await (fetch('https://www.asafkedem.com/api/v1/dates',
+    {
+        crossDomain:true
+    })
+    .then(res => {
+        return res.json();
+    })
+    .then(data => {
         // Set default data to retrieved 
-        DATES = data;
-        
-        console.log("DATES HAS BEEN CHANGED TO");
+        DATES = data.data;
+        return data.data;
+    })
+    .catch(err => {
+        console.log('Error: ', err)
+    })
+    ));
+
+
+    // const data = importDates().then(obj => {return obj;});
+    // console.log(data);
+    // console.log( DATES );
+
+    // data = importDates().then(data => {return data;});
+        // DATES = data;
+
+        // async () => {
+        //     await importDates ();
+        //     console.log( DATES )
+        // }
+        console.log("DATES IS");
         console.log( DATES );
 
         // Add image field to DATES
-
+        // let DATESstr = JSON.stringify(DATES.data);
+        // console.log(DATESstr);
         // console.log("Attempt to add image field");
-        // DATES = DATES.forEach(obj => {obj.image = require('../assets/dates/cake-102.jpg')});
+        // DATES = DATES.forEach(obj => 
+        //     {
+        //         Object.assign(obj.image, require('../assets/dates/cake-102.jpg'))
+        //         // obj.image = require('../assets/dates/cake-102.jpg')
+        //     });
         // console.log("After adding image field");
-        console.log(DATES);
-        call = false;
-    } 
+        // console.log(DATES);
 
     return DATES;
 }
