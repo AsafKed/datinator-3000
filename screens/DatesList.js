@@ -1,41 +1,41 @@
 import React, {useEffect, useState} from 'react';
 import { View, Text, FlatList, StyleSheet } from 'react-native';
-import { Product } from '../components/Date.js';
+import { Date } from '../components/Date.js';
 import { getDates } from '../services/DatesService.js';
-export function ProductsList ({navigation}) {
-function renderProduct({item: product}) {
+export function DatesList ({navigation}) {
+function renderDate({item: date}) {
     return (
-      <Product {...product} 
+      <Date {...date} 
       onPress={() => {
-        navigation.navigate('ProductDetails', {
-          productId: product.id,
+        navigation.navigate('DateDetails', {
+          dateId: date.date_id,
         });
       }}
       />
     );
   }
 
-  const [products, setProducts] = useState([]);
+  const [dates, setDates] = useState([]);
 
   useEffect(() => {
-    setProducts(getDates());
+    setDates(getDates());
   });
 
   return (
     <FlatList
-      style={styles.productsList}
-      contentContainerStyle={styles.productsListContainer}
+      style={styles.datesList}
+      contentContainerStyle={styles.datesListContainer}
       keyExtractor={(item) => item.id.toString()}
-      data={products}
-      renderItem={renderProduct}
+      data={dates}
+      renderItem={renderDate}
     />
   );
 }
 const styles = StyleSheet.create({
-  productsList: {
+  datesList: {
     backgroundColor: '#eeeeee',
   },
-  productsListContainer: {
+  datesListContainer: {
     backgroundColor: '#eeeeee',
     paddingVertical: 8,
     marginHorizontal: 8,

@@ -5,22 +5,22 @@ export function CartProvider(props) {
   const [items, setItems] = useState([]);
 
   function addItemToCart(id) {
-    const product = getDate(id);
+    const date = getDate(id);
     setItems((prevItems) => {
       const item = prevItems.find((item) => (item.id == id));
       if(!item) {
           return [...prevItems, {
               id,
               qty: 1,
-              product,
-              totalPrice: product.price 
+              date,
+              totalPrice: date.price_low 
           }];
       }
       else { 
           return prevItems.map((item) => {
             if(item.id == id) {
               item.qty++;
-              item.totalPrice += product.price;
+              item.totalPrice += date.price_low;
             }
             return item;
           });

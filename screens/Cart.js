@@ -19,7 +19,7 @@ const {items, getItemsCount, getTotalPrice} = useContext(CartContext);
 function renderItem({item}) {
     return (
        <View style={styles.cartLine}>
-          <Text style={styles.lineLeft}>{item.product.name} x {item.qty}</Text>
+          <Text style={styles.lineLeft}>{item.date.name} x {item.qty}</Text>
           <Text style={styles.lineRight}>{'\u20AC'} {item.totalPrice}</Text>
        </View>
     );
@@ -31,7 +31,7 @@ function renderItem({item}) {
       contentContainerStyle={styles.itemsListContainer}
       data={items}
       renderItem={renderItem}
-      keyExtractor={(item) => item.product.id.toString()}
+      keyExtractor={(item) => item.date.date_id.toString()}
       ListFooterComponent={Totals}
     />
   );

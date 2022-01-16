@@ -2,8 +2,8 @@ import React from 'react';
 import { StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { ProductsList } from './screens/DatesList.js';
-import { ProductDetails } from './screens/DateDetails.js';
+import { DatesList } from './screens/DatesList.js';
+import { DateDetails } from './screens/DateDetails.js';
 import { Cart } from './screens/Cart.js';
 import { CartIcon } from './components/CartIcon.js';
 import { CartProvider } from './CartContext.js';
@@ -13,15 +13,15 @@ function App() {
     <CartProvider>
       <NavigationContainer>
         <Stack.Navigator>
-          <Stack.Screen name='Products' component={ProductsList} 
+          <Stack.Screen name='Dates' component={DatesList} 
           options={({ navigation }) => ({
             title: 'All Dates',
             headerTitleStyle: styles.headerTitle,
             headerRight: () => <CartIcon navigation={navigation}/>
           })}/>
-          <Stack.Screen name='ProductDetails' component={ProductDetails} 
+          <Stack.Screen name='DateDetails' component={DateDetails} 
           options={({ navigation }) => ({
-            title: 'Product details',
+            title: 'Date details',
             headerTitleStyle: styles.headerTitle,
             headerRight: () => <CartIcon navigation={navigation}/>,
           })} />

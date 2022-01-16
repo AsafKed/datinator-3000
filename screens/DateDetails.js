@@ -10,18 +10,18 @@ import {
   } from 'react-native';
 import { getDate } from '../services/DatesService.js';
 import { CartContext } from '../CartContext';
-export function ProductDetails({route}) {
-  const { productId } = route.params;
-  const [product, setProduct] = useState({});
+export function DateDetails({route}) {
+  const { dateId } = route.params;
+  const [date, setDate] = useState({});
 
   const { addItemToCart } = useContext(CartContext);
 
   useEffect(() => {
-    setProduct(getDate(productId));
+    setDate(getDate(dateId));
   });
 
   function onAddToCart() {
-    addItemToCart(product.id);
+    addItemToCart(date.date_id);
   }
 
   return (
@@ -29,12 +29,12 @@ export function ProductDetails({route}) {
       <ScrollView>
         <Image
           style={styles.image}
-          source={product.image}
+          source={date.image}
         />
         <View style={styles.infoContainer}>
-          <Text style={styles.name}>{product.name}</Text>
-          <Text style={styles.price}>$ {product.price}</Text>
-          <Text style={styles.description}>{product.description}</Text>
+          <Text style={styles.name}>{date.name}</Text>
+          <Text style={styles.price}>$ {date.price_low}</Text>
+          <Text style={styles.description}>{date.short_description}</Text>
             <Button
             onPress={onAddToCart}
             title="Add to cart"
