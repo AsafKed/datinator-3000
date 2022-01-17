@@ -23,15 +23,30 @@
     }
 ];
 
+// Get JSON object of all dates in the database.
 export function getDates() {
     return fetch('https://www.asafkedem.com/api/v1/dates',
     {
         crossDomain:true
     })
-    .then(res => res.json());
-
+    .then(res => res.json())
+    .then(json => json.data);
 }
 
+// Get JSON object of the specified date.
 export function getDate(date_id) {
-    return DATES.find((date) => (date.date_id == date_id));
+    return fetch('https://www.asafkedem.com/api/v1/dates',
+    {
+        crossDomain:true
+    })
+    .then(res => res.json())
+    .then(json => json.data)
+    // Filter the data for date_id
+    .then(data => {
+        const date = data.filter(
+            function(data){ return data.date_id == date_id}
+        )
+        // [0] extracts the object from the array
+        return date[0];
+    })
 }

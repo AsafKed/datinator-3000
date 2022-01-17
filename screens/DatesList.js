@@ -20,10 +20,10 @@ function renderDate({item: date}) {
   useEffect(() => {
     let mounted = true;
     getDates()
-      .then(items => {
+      .then(data => {
         if (mounted) {
-          console.log(items.data);
-          setDates(items.data);
+          console.log(data);
+          setDates(data);
         }
       })
       return () => mounted = false;

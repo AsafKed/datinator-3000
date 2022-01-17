@@ -17,8 +17,18 @@ export function DateDetails({route}) {
   const { addItemToCart } = useContext(CartContext);
 
   useEffect(() => {
-    setDate(getDate(dateId));
-  });
+    let mounted = true;
+    getDate(dateId)
+    .then(item => {
+      if (mounted) {
+          console.log("Date clicked");
+          console.log(item);
+          setDate(item);
+        }
+      })
+      return () => mounted = false;
+    // setDate(getDate(dateId));
+  }, []);
 
   function onAddToCart() {
     addItemToCart(date.date_id);
