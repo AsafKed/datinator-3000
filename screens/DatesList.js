@@ -42,10 +42,10 @@ function renderDate({item: date}) {
 }
 const styles = StyleSheet.create({
   datesList: {
-    backgroundColor: '#eeeeee',
+    backgroundColor: '#f5f5f5',
   },
   datesListContainer: {
-    backgroundColor: '#eeeeee',
+    backgroundColor: '#f5f5f5',
     paddingVertical: 8,
     marginHorizontal: 8,
   },

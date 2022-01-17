@@ -50,3 +50,15 @@ export function getDate(date_id) {
         return date[0];
     })
 }
+
+export function getImage(name) {
+    const link = "../assets/dates/" + name.toLowerCase() + ".jpg";
+    console.log(link)
+    try 
+    {
+        return (link);
+    }
+    catch {
+        return '../assets/dates/cake-102.jpg';
+    }
+}
