@@ -5,7 +5,8 @@ export function Date({name, price_low, image, onPress}) {
     <TouchableOpacity style={styles.card} onPress={onPress}>
       <Image
         style={styles.thumb}
-        source={image}
+        source={require('../assets/dates/cake-102.jpg')}
+        // source={image}
       />
       <View style={styles.infoContainer}>
         <Text style={styles.name}>{name}</Text>

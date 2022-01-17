@@ -18,7 +18,16 @@ function renderDate({item: date}) {
   const [dates, setDates] = useState([]);
 
   useEffect(() => {
-    setDates(getDates());
+    let mounted = true;
+    getDates()
+      .then(items => {
+        if (mounted) {
+          console.log(items.data);
+          setDates(items.data);
+        }
+      })
+      return () => mounted = false;
+    // setDates(getDates());
   }, []);
 
   return (

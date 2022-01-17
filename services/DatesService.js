@@ -1,59 +1,4 @@
-function renameKey ( obj, oldKey, newKey ) {
-    obj[newKey] = obj[oldKey];
-    delete obj[oldKey];
-  }
-
-  /**
- * The function searches over the array by certain field value,
- * and replaces occurences with the parameter provided.
- *
- * @param string field Name of the object field to compare
- * @param string oldvalue Value to compare against
- * @param string newvalue Value to replace mathes with
- */
-function replaceByValue(json, field) {
-    for( var k = 0; k < json.length; ++k ) {
-            json[k][field] = require('../assets/dates/cake-102.jpg') ;
-    }
-    return json;
-}
-
-function shapeJSON(obj) {
-    const arr = JSON.parse(obj);
-    // const arr = json.json()
-    //arr.forEach( obj => renameKey( obj, 'date_id', 'id' ) );
-    // arr.forEach( obj => renameKey( obj, 'short_description', 'description' ) );
-    // arr.forEach( obj => renameKey( obj, 'price_low', 'price' ) );
-    // arr.forEach( obj => renameKey( obj, 'double_date', 'image' ) );
-    // const arrstring = JSON.stringify( arr );
-    // replaceByValue(arrstring, "image");
-    // console.log( arrstring );
-    // const updatedJson = JSON.parse( arrstring )
-    // console.log( updatedJson );
-
-    // DATES = updatedJson;
-
-}
-
-//   const json = `
-//     [
-//       {
-//         "_id":"5078c3a803ff4197dc81fbfb",
-//         "email":"user1@gmail.com",
-//         "image":"some_image_url",
-//         "name":"Name 1"
-//       },
-//       {
-//         "_id":"5078c3a803ff4197dc81fbfc",
-//         "email":"user2@gmail.com",
-//         "image":"some_image_url",
-//         "name":"Name 2"
-//       }
-//     ]
-//   `;
-     
-
-let DATES = [
+   let DATES = [
     {
         date_id: 1,
         name: 'ReactProX Headset',
@@ -78,80 +23,15 @@ let DATES = [
     }
 ];
 
-async function importDates () {
-    // Call the data 
-    let data = await (await (fetch('https://www.asafkedem.com/api/v1/dates',
+export function getDates() {
+    return fetch('https://www.asafkedem.com/api/v1/dates',
     {
         crossDomain:true
     })
-    .then(res => {
-        return res.json();
-    })
-    .then(data => {
-        // Set default data to retrieved 
-        DATES = data.data;
-        return data.data;
-    })
-    .catch(err => {
-        console.log('Error: ', err)
-    })
-    ));
-    return data;
-}
+    .then(res => res.json());
 
-export async function getDates() {
-    await (await (fetch('https://www.asafkedem.com/api/v1/dates',
-    {
-        crossDomain:true
-    })
-    .then(res => {
-        return res.json();
-    })
-    .then(data => {
-        // Set default data to retrieved 
-        DATES = data.data;
-        return data.data;
-    })
-    .catch(err => {
-        console.log('Error: ', err)
-    })
-    ));
-
-
-    // const data = importDates().then(obj => {return obj;});
-    // console.log(data);
-    // console.log( DATES );
-
-    // data = importDates().then(data => {return data;});
-        // DATES = data;
-
-        // async () => {
-        //     await importDates ();
-        //     console.log( DATES )
-        // }
-        console.log("DATES IS");
-        console.log( DATES );
-
-        // Add image field to DATES
-        // let DATESstr = JSON.stringify(DATES.data);
-        // console.log(DATESstr);
-        // console.log("Attempt to add image field");
-        // DATES = DATES.forEach(obj => 
-        //     {
-        //         Object.assign(obj.image, require('../assets/dates/cake-102.jpg'))
-        //         // obj.image = require('../assets/dates/cake-102.jpg')
-        //     });
-        // console.log("After adding image field");
-        // console.log(DATES);
-
-    return DATES;
 }
 
 export function getDate(date_id) {
     return DATES.find((date) => (date.date_id == date_id));
 }
-
-// add ; delimiter
-// var results = Papa.parse("../../Dates.csv");
-// console.log(results.meta.delimiter);
-// console.log(results)

@@ -29,7 +29,8 @@ export function DateDetails({route}) {
       <ScrollView>
         <Image
           style={styles.image}
-          source={date.image}
+          source={require('../assets/dates/cake-102.jpg')}
+          // source={date.image}
         />
         <View style={styles.infoContainer}>
           <Text style={styles.name}>{date.name}</Text>
