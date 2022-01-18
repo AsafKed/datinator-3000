@@ -33,12 +33,14 @@ export function Date({name, short_description, duration, activity, price_low, pr
           </View>
   
           {/* PRICE */}
+          <View style={styles.attribute}>
             <Image
               style={styles.icon}
               source={require('../assets/price.png')} 
               />
             <Text style={styles.attribute_text}> {price_low}–{price_high}</Text>
         </View>
+      </View>
       </View>
     </TouchableOpacity>
   );
@@ -102,6 +104,7 @@ const styles = StyleSheet.create({
       flex: 1,
       flexDirection: 'row',
       justifyContent: 'flex-start',
+      marginHorizontal: 10,
       // display: 'grid',
       // gridTemplateColumns: '14% 86%',
       // justifyContent: 'flex-start',
@@ -114,6 +117,7 @@ const styles = StyleSheet.create({
     attribute_text: {
       color: '#A0A0A0',
       fontSize:11,
+      marginLeft: 5,
       // flex: '50%',
       // fontSize: 16,
       // fontWeight: '600',

@@ -17,19 +17,19 @@ function App() {
           options={({ navigation }) => ({
             title: 'All Dates',
             headerTitleStyle: styles.headerTitle,
-            headerRight: () => <CartIcon navigation={navigation}/>
+            // headerRight: () => <CartIcon navigation={navigation}/>
           })}/>
           <Stack.Screen name='DateDetails' component={DateDetails} 
           options={({ navigation }) => ({
             title: 'Date details',
             headerTitleStyle: styles.headerTitle,
-            headerRight: () => <CartIcon navigation={navigation}/>,
+            // headerRight: () => <CartIcon navigation={navigation}/>,
           })} />
           <Stack.Screen name='Cart' component={Cart} 
           options={({ navigation }) => ({
             title: 'My cart',
             headerTitleStyle: styles.headerTitle,
-            headerRight: () => <CartIcon navigation={navigation}/>,
+            // headerRight: () => <CartIcon navigation={navigation}/>,
           })} />
         </Stack.Navigator>
       </NavigationContainer>
