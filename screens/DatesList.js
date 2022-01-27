@@ -27,7 +27,6 @@ function renderDate({item: date}) {
         }
       })
       return () => mounted = false;
-    // setDates(getDates());
   }, []);
 
   return (

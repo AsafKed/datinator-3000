@@ -51,6 +51,7 @@ export function getDate(date_id) {
     })
 }
 
+// TODO FIX 
 export function getImage(name) {
     const link = "../assets/dates/" + name.toLowerCase() + ".jpg";
     console.log(link)
@@ -61,4 +62,69 @@ export function getImage(name) {
     catch {
         return '../assets/dates/cake-102.jpg';
     }
+}
+
+// Get individual unique values of attributes
+
+// TODO map prices
+export function getPrices() {
+    return fetch('https://www.asafkedem.com/api/v1/dates',
+    {
+        crossDomain:true
+    })
+    .then(res => res.json())
+    .then(json => json.data)
+    .then(data => {
+        const prices = 
+            data.map(item => item.price_high)
+            // <15e: cheap, <50e: moderate, else: expensive
+            .map(item => {
+                if (item<15) {
+                    return "Cheapos";
+                }
+                else if (item > 15 && item < 50) {
+                    return "A lil bougie";
+                }
+                else {
+                    return "Bougie af";
+                }
+            })
+            .filter((value, index, self) => self.indexOf(value) === index);
+        console.log(typeof(prices))
+
+        // Very hacky reordering to be money-based (not alphabetic)
+        const prices_ordered = [prices[2], prices[0], prices[1]];
+
+        return prices_ordered;
+    })
+}
+
+export function getDurations() {
+    return fetch('https://www.asafkedem.com/api/v1/dates',
+    {
+        crossDomain:true
+    })
+    .then(res => res.json())
+    .then(json => json.data)
+    .then(data => {
+        const durations = 
+            data.map(item => item.duration)
+                .filter((value, index, self) => self.indexOf(value) === index);
+        return durations;
+    })
+}
+
+export function getVibes() {
+    return fetch('https://www.asafkedem.com/api/v1/dates',
+    {
+        crossDomain:true
+    })
+    .then(res => res.json())
+    .then(json => json.data)
+    .then(data => {
+        const vibes = 
+            data.map(item => item.vibe)
+                .filter((value, index, self) => self.indexOf(value) === index);
+        return vibes;
+    })
 }
