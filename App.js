@@ -16,9 +16,10 @@ function App() {
         <Stack.Navigator>
           <Stack.Screen name="Prompt" component={Prompt} 
           options={({ navigation }) => ({
-            title: "Prompt",
-            headerTitleStyle: styles.headerTitleStyle
-          })}/>
+            // title: "Prompt",
+            // headerTitleStyle: styles.headerTitleStyle
+          })}
+          />
           <Stack.Screen name='Dates' component={DatesList} 
           options={({ navigation }) => ({
             title: 'All Dates',

@@ -94,7 +94,7 @@ export function getPrices() {
 
         // Very hacky reordering to be money-based (not alphabetic)
         const prices_ordered = [prices[2], prices[0], prices[1]];
-
+        
         return prices_ordered;
     })
 }
@@ -108,9 +108,12 @@ export function getDurations() {
     .then(json => json.data)
     .then(data => {
         const durations = 
-            data.map(item => item.duration)
-                .filter((value, index, self) => self.indexOf(value) === index);
-        return durations;
+        data.map(item => item.duration)
+        .filter((value, index, self) => self.indexOf(value) === index);
+        
+        // Very hacky reordering to be duration-based (not alphabetic)
+        const durations_ordered = [durations[1], durations[0], durations[2]];
+        return durations_ordered;
     })
 }
 
@@ -123,8 +126,11 @@ export function getVibes() {
     .then(json => json.data)
     .then(data => {
         const vibes = 
-            data.map(item => item.vibe)
-                .filter((value, index, self) => self.indexOf(value) === index);
-        return vibes;
+        data.map(item => item.vibe)
+        .filter((value, index, self) => self.indexOf(value) === index);
+        
+        // Order alphabetically
+        const vibes_ordered = vibes.sort().filter(n => n);
+        return vibes_ordered;
     })
 }

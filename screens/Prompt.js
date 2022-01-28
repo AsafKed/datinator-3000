@@ -1,11 +1,11 @@
 import React, {useEffect, useState} from 'react';
-import { View, Text, Button, StyleSheet } from 'react-native';
+import { View, Text, Button, StyleSheet, Dimensions } from 'react-native';
 // import Select from 'react-select';
 import { PricePicker, DurationPicker, VibePicker } from '../components/PromptPickers.js';
 import { Date } from '../components/Date.js';
 // import { getVibes } from '../services/DatesService.js';
 export function Prompt ({navigation}) {
-// function renderDate({item: date}) {
+// function findDate({item: date}) {
 //     return (
 //       <Date {...date} 
 //       onPress={() => {
@@ -37,46 +37,68 @@ export function Prompt ({navigation}) {
 
 
 
-  const options = [
-    { value: 'chocolate', label: 'Chocolate' },
-    { value: 'strawberry', label: 'Strawberry' },
-    { value: 'vanilla', label: 'Vanilla' }
-  ]
+  // const options = [
+  //   { value: 'chocolate', label: 'Chocolate' },
+  //   { value: 'strawberry', label: 'Strawberry' },
+  //   { value: 'vanilla', label: 'Vanilla' }
+  // ]
 
-  const customStyles = {
-    control: () => ({
-      border: 'none',
-    }),
-  };
+  // const customStyles = {
+  //   control: () => ({
+  //     border: 'none',
+  //   }),
+  // };
+
+  const { height } = Dimensions.get('window');
+  // const bigFontSize = {  };
+  const bigFontSize = { fontSize: (height / 20) };
 
   return (
-    <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-      <Text>I/we want a date that is (price) and will take (duration), but is also (vibe).</Text>
+    <View style={styles.screen}>
+      <View style={styles.promptsContainer}>
+        <Text>I want a date that's </Text> 
+        <PricePicker/>
 
-      <PricePicker/>
-      <DurationPicker/>
-      <VibePicker/>
+        <Text> and will take </Text> 
+        <DurationPicker/>
+        
+        <Text> but is also </Text>
+        <VibePicker/>
+      </View>
 
-
-      <Button
-            // onPress={onAddToCart}
+      <View style={{width: '70%'}}>
+        <Button
+            // onPress={findDate}
             title="FIND"
             style={styles.butt}
-            / >
+          / >
+      </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  datesList: {
+  // datesList: {
+  //   backgroundColor: '#f5f5f5',
+  // },
+  screen: {
     backgroundColor: '#f5f5f5',
+    margin: 'auto',
+    alignItems: 'center'
   },
-  datesListContainer: {
+  promptsContainer: {
     backgroundColor: '#f5f5f5',
     paddingVertical: 8,
-    marginHorizontal: 8,
+    // marginHorizontal: 8,
+    // flex: 1,
+    flexWrap: 'wrap',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    fontSize: 'height*10'
   },
   butt: {
-    marginVertical: 100,
+    // marginVertical: 100,
+    width: '100px'
   }
 });
